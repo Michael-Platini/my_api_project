@@ -1,19 +1,22 @@
-# Ambientes virtuais
+# Ignorar o diretório de ambiente virtual
 venv/
+env/
+*.env
 
-# Arquivos compilados do Python
-__pycache__/
+# Ignorar arquivos de configuração do Python
 *.pyc
 *.pyo
-*.pyd
+__pycache__/
 
-# Logs e arquivos temporários
+# Ignorar arquivos temporários
 *.log
-
-# Configurações do sistema operacional
+*.swp
+*.swo
 .DS_Store
-Thumbs.db
 
-# Configurações do IDE/editor
-.vscode/
+# Ignorar o arquivo de configuração de IDE
 .idea/
+.vscode/
+
+# Ignorar arquivos de backup do sistema
+*~
