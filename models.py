@@ -1,22 +1,31 @@
-from flask_sqlalchemy import SQLAlchemy
+# models.py
+import json
+import os  # Adicionando a importação do módulo os
 from datetime import datetime
- 
-db = SQLAlchemy()
 
-#Modelo de Item
-class Item(db.Model):
+# Caminho do arquivo de dados
+DATA_FILE = 'items.json'
 
-# Atributos:
- #       id (int): Identificador único do item.
- #       name (str): Nome do item.
- #       value (float): Valor monetário do item.
- #       is_electronic (bool): Indica se o item é eletrônico.
- #       creation_date (datetime): Data de criação do item.
+def load_items():
+    """Carrega os itens do arquivo JSON"""
+    if not os.path.exists(DATA_FILE):  # Verifica se o arquivo existe
+        return []
 
-    __tablename__ = 'items' # Nome da tabela no banco de dados
+    with open(DATA_FILE, 'r') as f:
+        return json.load(f)
 
-    id = db.Column(db.Integer, primary_key=True) # Chave primária (id)
-    name = db.Column(db.String(100), nullable=False) # Nome do item
-    value = db.Column(db.Float, nullable=False) # Valor do item
-    is_electronic = db.Column(db.Boolean, default=False) # É eletrônico?
-    creation_date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)  # Data de criação automática
+def save_items(items):
+    """Salva os itens no arquivo JSON"""
+    with open(DATA_FILE, 'w') as f:
+        json.dump(items, f, indent=4)
+
+def generate_item_id(items):
+    """Gera um ID único para o novo item"""
+    return len(items) + 1
+
+def format_date(date):
+    """Formata a data para o formato adequado"""
+    return date.strftime('%Y-%m-%d %H:%M:%S')
+
+# Carrega os itens do arquivo JSON
+items = load_items()
