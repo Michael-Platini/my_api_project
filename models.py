@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
  
 db = SQLAlchemy()
 
@@ -18,4 +19,4 @@ class Item(db.Model):
     name = db.Column(db.String(100), nullable=False) # Nome do item
     value = db.Column(db.Float, nullable=False) # Valor do item
     is_electronic = db.Column(db.Boolean, default=False) # É eletrônico?
-    creation_date = db.Column(db.DateTime, default=db.func.current_timestamp())  # Data de criação automática
+    creation_date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)  # Data de criação automática
