@@ -1,63 +1,25 @@
-"""
-Module for handling item data storage and utility functions.
-"""
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
-import json
-import os
-
-# Path to the data file
-DATA_FILE = 'items.json'
+db = SQLAlchemy()
 
 
-def load_items():
-    """
-    Load items from the JSON file.
+class Item(db.Model):
+    __tablename__ = 'items'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    value = db.Column(db.Float, nullable=False)
+    is_electronic = db.Column(db.Boolean, default=False)
+    creation_date = db.Column(db.DateTime, default=datetime.utcnow)
 
-    Returns:
-        list: A list of items if the file exists; otherwise, an empty list.
-    """
-    if not os.path.exists(DATA_FILE):
-        return []
-
-    with open(DATA_FILE, 'r') as f:
-        return json.load(f)
-
-
-def save_items(items):
-    """
-    Save items to the JSON file.
-
-    Args:
-        items (list): The list of items to save.
-    """
-    with open(DATA_FILE, 'w') as f:
-        json.dump(items, f, indent=4)
-
-
-def generate_item_id(items):
-    """
-    Generate a unique ID for a new item.
-
-    Args:
-        items (list): The current list of items.
-
-    Returns:
-        int: A new unique ID.
-    """
-    return len(items) + 1
-
-
-def format_date(date):
-    """
-    Format a date into a string.
-
-    Args:
-        date (datetime): The date to format.
-
-    Returns:
-        str: The formatted date string.
-    """
-    return date.strftime('%Y-%m-%d %H:%M:%S')
-
-
-items = load_items()
+    def to_dict(self):
+        """
+        Convert the Item object to a dictionary.
+        """
+        return {
+            "id": self.id,
+            "name": self.name,
+            "value": self.value,
+            "is_electronic": self.is_electronic,
+            "creation_date": self.creation_date.strftime('%Y-%m-%d %H:%M:%S')
+        }

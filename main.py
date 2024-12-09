@@ -1,14 +1,18 @@
 import os
-"""
-Entry point for the Flask application.
-"""
-
 from flask import Flask
+from models import db
 from routes import bp as routes_bp
 
 app = Flask(__name__)
 
-# Register the routes
+# Configuração do banco de dados
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Inicializa o SQLAlchemy
+db.init_app(app)
+
+# Registro das rotas
 app.register_blueprint(routes_bp)
 
 if __name__ == '__main__':
