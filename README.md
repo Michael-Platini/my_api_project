@@ -36,29 +36,30 @@ This project provides an API for managing items with the following operations:
 
 ## 📥 Local Installation
 
+## 📥 Local Installation
+
 1. **Clone this repository**:
    
-   git clone https://github.com/Michael-Platini/my_api_project.git
-   cd my_api_project
+git clone https://github.com/Michael-Platini/my_api_project.git
+cd my_api_project
    
 2. **Create a virtual environment and activate it**:
 
 
-python3 -m venv venv
+   python3 -m venv venv
 
-source venv/bin/activate  - Linux/macOS
+   source venv/bin/activate  - Linux/macOS
 
-venv\Scripts\activate     - Windows
+   venv\Scripts\activate     - Windows
 
 3. **Instale as dependências**:
 
 
 
 
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 Run the application locally:
-
 
 
 python main.py
