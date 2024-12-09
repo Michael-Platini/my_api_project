@@ -77,27 +77,26 @@ The project uses Pytest to test the API endpoints, including creation, listing, 
 pytest test_api.py
 
 
-# 📄 Endpoints
+# Endpoints
 
-### `GET /items`
-- **Descrição**: Lista todos os itens no sistema.
-- **Resposta**: Array JSON contendo os itens.
+## GET /items
+**Description:** Lists all items in the system.  
+**Response:** JSON array containing the items.
 
-### `GET /items/int:item_id`
-- **Descrição**: Recupera um item pelo seu ID.
-- **Resposta**: Objeto JSON do item ou mensagem de erro caso não encontrado.
+## GET /items/{item_id}
+**Description:** Retrieves an item by its ID.  
+**Response:** JSON object of the item or an error message if not found.
 
-### `POST /items`
-- **Descrição**: Cria um novo item.
-- **Corpo**: Objeto JSON contendo `name` (string) e `value` (float). `is_electronic` é opcional.
-- **Resposta**: Objeto JSON do item criado.
+## POST /items
+**Description:** Creates a new item.  
+**Body:** JSON object containing `name` (string) and `value` (float). `is_electronic` is optional.  
+**Response:** JSON object of the created item.
 
-### `PUT /items/int:item_id`
-- **Descrição**: Atualiza um item existente.
-- **Corpo**: Objeto JSON contendo o nome atualizado, valor e `is_electronic`.
-- **Resposta**: Objeto JSON do item atualizado.
+## PUT /items/{item_id}
+**Description:** Updates an existing item.  
+**Body:** JSON object containing the updated `name`, `value`, and `is_electronic`.  
+**Response:** JSON object of the updated item.
 
-### `DELETE /items/int:item_id`
-- **Descrição**: Deleta um item pelo seu ID.
-- **Resposta**: Mensagem de confirmação de exclusão bem-sucedida ou erro caso não encontrado.
-
+## DELETE /items/{item_id}
+**Description:** Deletes an item by its ID.  
+**Response:** Confirmation message of successful deletion or an error message if not found.
