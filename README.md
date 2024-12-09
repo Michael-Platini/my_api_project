@@ -1,8 +1,3 @@
-
-Aqui está o conteúdo formatado para o README.md:
-
-markdown
-Copiar código
 # Item Management API
 
 This project provides an API for managing items with the following operations:
@@ -41,56 +36,68 @@ This project provides an API for managing items with the following operations:
 
 ## 📥 Local Installation
 
-1. Clone this repository:
-   ```bash
+1. **Clone this repository**:
+   
    git clone https://github.com/Michael-Platini/my_api_project.git
    cd my_api_project
-Create a virtual environment and activate it:
+   
+2. **Create a virtual environment and activate it**:
 
-bash
-Copiar código
+
 python3 -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
-Install the dependencies:
 
-bash
-Copiar código
+source venv/bin/activate  - Linux/macOS
+
+venv\Scripts\activate     - Windows
+
+3. **Instale as dependências**:
+
+
+
+
 pip install -r requirements.txt
+
 Run the application locally:
 
-bash
-Copiar código
+
+
 python main.py
+
 Access the API in your browser or using tools like Postman or curl:
 
-bash
-Copiar código
+
 http://127.0.0.1:8080/
-🧪 Testing
+
+
+## 🧪 Testing
+
 The project uses Pytest to test the API endpoints, including creation, listing, updating, and deletion of items.
 
-To run the tests:
-
-bash
-Copiar código
+### To run the tests:
 pytest test_api.py
-📄 Endpoints
-GET /items
-Description: Lists all items in the system.
-Response: JSON array of items.
-GET /items/<int:item_id>
-Description: Retrieves an item by its ID.
-Response: JSON object of the item or error message if not found.
-POST /items
-Description: Creates a new item.
-Body: JSON object containing name (string) and value (float). is_electronic is optional.
-Response: JSON object of the created item.
-PUT /items/<int:item_id>
-Description: Updates an existing item.
-Body: JSON object containing updated name, value, and is_electronic.
-Response: JSON object of the updated item.
-DELETE /items/<int:item_id>
-Description: Deletes an item by its ID.
-Response: Confirmation message of successful deletion or error if not found.
+
+
+# 📄 Endpoints
+
+### `GET /items`
+- **Descrição**: Lista todos os itens no sistema.
+- **Resposta**: Array JSON contendo os itens.
+
+### `GET /items/int:item_id`
+- **Descrição**: Recupera um item pelo seu ID.
+- **Resposta**: Objeto JSON do item ou mensagem de erro caso não encontrado.
+
+### `POST /items`
+- **Descrição**: Cria um novo item.
+- **Corpo**: Objeto JSON contendo `name` (string) e `value` (float). `is_electronic` é opcional.
+- **Resposta**: Objeto JSON do item criado.
+
+### `PUT /items/int:item_id`
+- **Descrição**: Atualiza um item existente.
+- **Corpo**: Objeto JSON contendo o nome atualizado, valor e `is_electronic`.
+- **Resposta**: Objeto JSON do item atualizado.
+
+### `DELETE /items/int:item_id`
+- **Descrição**: Deleta um item pelo seu ID.
+- **Resposta**: Mensagem de confirmação de exclusão bem-sucedida ou erro caso não encontrado.
 
