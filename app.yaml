@@ -3,6 +3,7 @@ runtime: python39
 env_variables:
   FLASK_ENV: "production"  # Configuração para rodar o Flask em produção
   GOOGLE_CLOUD_PROJECT: "ferrous-freedom-444200-m5"  # ID do seu projeto no GCP
+  entrypoint: gunicorn -b :$PORT main:app
 
 instance_class: F2  # Tamanho da instância (pode ser ajustado conforme necessário)
 
