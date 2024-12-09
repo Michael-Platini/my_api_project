@@ -46,22 +46,28 @@ pytest test_api.py
 
 
 Endpoints:
+
 GET /items
 Description: Lists all items in the system.
 Response: JSON array of items.
 
+
 GET /items/<int:item_id>
 Description: Retrieves an item by its ID.
 Response: JSON object of the item or error message if not found.
+
+
 POST /items
 Description: Creates a new item.
 Body: JSON object containing name and value. is_electronic is optional.
 Response: JSON object of the created item.
 
+
 PUT /items/<int:item_id>
 Description: Updates an existing item.
 Body: JSON object containing updated name, value, and is_electronic.
 Response: JSON object of the updated item.
+
 
 DELETE /items/<int:item_id>
 Description: Deletes an item by its ID.
