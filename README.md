@@ -34,14 +34,13 @@ This project provides an API for managing items with the following operations:
 
 ---
 
-## 📥 Local Installation
 
 ## 📥 Local Installation
 
 1. **Clone this repository**:
    
-git clone https://github.com/Michael-Platini/my_api_project.git
-cd my_api_project
+   git clone https://github.com/Michael-Platini/my_api_project.git
+   cd my_api_project
    
 2. **Create a virtual environment and activate it**:
 
@@ -59,15 +58,15 @@ cd my_api_project
 
    pip install -r requirements.txt
 
-Run the application locally:
+   Run the application locally:
 
 
-python main.py
+   python main.py
 
-Access the API in your browser or using tools like Postman or curl:
+   Access the API in your browser or using tools like Postman or curl:
 
 
-http://127.0.0.1:8080/
+   http://127.0.0.1:8080/
 
 
 ## 🧪 Testing
