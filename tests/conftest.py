@@ -1,20 +1,20 @@
 """
-Configuração do ambiente de testes.
+Test Environment Configuration.
 
-Este módulo configura o ambiente necessário para os testes automatizados.
-Adiciona o diretório raiz do projeto ao `sys.path`, permitindo importar
-corretamente os módulos do projeto.
+This module sets up the environment required for automated tests.
+It adds the project's root directory to the `sys.path`, enabling proper
+importing of project modules.
 
-Estrutura:
-- Configura o caminho base do projeto antes de rodar os testes.
+Structure:
+- Configures the project's base path before running the tests.
 
-Uso:
-Não é necessário chamar explicitamente este arquivo. Ele será carregado
-automaticamente pelo Pytest antes da execução dos testes.
+Usage:
+There is no need to explicitly call this file. It will be automatically
+loaded by Pytest before executing the tests.
 """
 
 import sys
 import os
 
-# Adiciona o diretório raiz do projeto ao sys.path antes de rodar os testes
+# Adds the project's root directory to sys.path before running the tests
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))

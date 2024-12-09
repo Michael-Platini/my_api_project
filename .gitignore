@@ -1,22 +1,25 @@
-# Ignorar o diretório de ambiente virtual
+
+plaintext
+Copiar código
+# Ignore virtual environment directories
 venv/
 env/
 *.env
 
-# Ignorar arquivos de configuração do Python
+# Ignore Python configuration files
 *.pyc
 *.pyo
 __pycache__/
 
-# Ignorar arquivos temporários
+# Ignore temporary files
 *.log
 *.swp
 *.swo
 .DS_Store
 
-# Ignorar o arquivo de configuração de IDE
+# Ignore IDE configuration files
 .idea/
 .vscode/
 
-# Ignorar arquivos de backup do sistema
-*~
+# Ignore system backup files
+*~S
