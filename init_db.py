@@ -1,7 +1,5 @@
-from models import db
-from main import app
+# init_db.py
+from main import app, db
 
 with app.app_context():
-    db.init_app(app)
-    db.create_all()
-    print("Database initialized successfully.")
+    db.create_all()  # Criação das tabelas
