@@ -1,3 +1,15 @@
+"""
+Routes for managing items in the Flask application.
+
+This module defines the routes for:
+    - Listing all items.
+    - Retrieving a specific item by ID.
+    - Creating a new item.
+    - Updating an existing item by ID.
+    - Deleting an item by ID.
+
+Each route interacts with the database using SQLAlchemy and returns data in JSON format.
+"""
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -14,7 +26,15 @@ class Item(db.Model):
 
     def to_dict(self):
         """
-        Convert the Item object to a dictionary.
+        Converts the Item object to a dictionary format.
+
+        Returns:
+            dict: The item as a dictionary, including fields:
+                - id: The item's ID.
+                - name: The item's name.
+                - value: The item's value.
+                - is_electronic: Whether the item is electronic.
+                - creation_date: The item's creation date as a string.
         """
         return {
             "id": self.id,
@@ -23,3 +43,4 @@ class Item(db.Model):
             "is_electronic": self.is_electronic,
             "creation_date": self.creation_date.strftime('%Y-%m-%d %H:%M:%S')
         }
+
