@@ -1,28 +1,6 @@
-"""
-Tests for the Item Management API
-
-This module contains automated tests to validate the functionalities
-of the item management API, including creation, listing, updating,
-deletion, and error scenarios.
-
-Requirements:
-- Pytest to run the tests.
-- The main application (`main.py`) to be tested.
-
-Test Structure:
-- Item creation test.
-- Item listing test.
-- Item updating test.
-- Item deletion test.
-- Error scenarios (item not found).
-
-Execution:
-To run the tests, use the command:
-    pytest test_api.py
-"""
-
 import pytest
 from main import app
+from models import db
 
 
 @pytest.fixture
@@ -33,8 +11,20 @@ def client():
     Returns:
         FlaskClient: Instance of the test client.
     """
-    with app.test_client() as client:
-        yield client
+
+    # Configuração para o banco de dados de teste
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    # Criação do banco de dados
+    with app.app_context():
+        db.create_all()
+
+    yield app.test_client()
+
+    # Limpeza após o teste
+    with app.app_context():
+        db.drop_all()
 
 
 def test_create_item(client):
@@ -73,6 +63,10 @@ def test_list_items(client):
     Validations:
     - The response must be a non-empty list.
     """
+    # Cria um item para garantir que haja algum no banco
+    new_item = {'name': 'Book', 'value': 99.99}
+    client.post('/items', json=new_item)
+
     response = client.get('/items')
     assert response.status_code == 200 and isinstance(
         response.json, list) and len(response.json) > 0
@@ -146,3 +140,5 @@ def test_item_not_found(client):
     """
     response = client.get('/items/99999')
     assert response.status_code == 404 and response.json == {'error': 'Item not found'}
+
+
